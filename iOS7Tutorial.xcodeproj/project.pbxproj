@@ -112,8 +112,6 @@
 		6ED3E77C195029060007C087 /* iOS7Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				6ED3E785195029060007C087 /* HYAppDelegate.h */,
-				6ED3E786195029060007C087 /* HYAppDelegate.m */,
 				6ED3E788195029060007C087 /* Main.storyboard */,
 				6ED3E78B195029060007C087 /* HYViewController.h */,
 				6ED3E78C195029060007C087 /* HYViewController.m */,
@@ -126,6 +124,8 @@
 		6ED3E77D195029060007C087 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6ED3E785195029060007C087 /* HYAppDelegate.h */,
+				6ED3E786195029060007C087 /* HYAppDelegate.m */,
 				6ED3E77E195029060007C087 /* iOS7Tutorial-Info.plist */,
 				6ED3E77F195029060007C087 /* InfoPlist.strings */,
 				6ED3E782195029060007C087 /* main.m */,
@@ -462,6 +462,7 @@
 				6ED3E7A7195029060007C087 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6ED3E7A8195029060007C087 /* Build configuration list for PBXNativeTarget "iOS7TutorialTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +471,7 @@
 				6ED3E7AA195029060007C087 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

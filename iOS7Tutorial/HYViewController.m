@@ -8,7 +8,12 @@
 
 #import "HYViewController.h"
 
-@interface HYViewController ()
+@interface HYViewController () {
+    UICollisionBehavior* _collision;
+}
+
+@property (nonatomic, strong) UIDynamicAnimator *animator;
+@property (nonatomic, strong) UIGravityBehavior *gravity;
 
 @end
 
@@ -18,6 +23,18 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    UIView *square = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    square.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:square];
+    
+    self.animator = [[UIDynamicAnimator alloc]
+                                     initWithReferenceView:self.view];
+    self.gravity = [[UIGravityBehavior alloc] initWithItems:@[square]];
+    [self.animator addBehavior:self.gravity];
+    
+    _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
+    _collision.translatesReferenceBoundsIntoBoundary = YES;
+    [self.animator addBehavior:_collision];
 }
 
 - (void)didReceiveMemoryWarning
