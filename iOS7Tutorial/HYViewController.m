@@ -8,7 +8,7 @@
 
 #import "HYViewController.h"
 
-@interface HYViewController () {
+@interface HYViewController () <UICollisionBehaviorDelegate> {
     UICollisionBehavior* _collision;
 }
 
@@ -31,13 +31,27 @@
     [self.view addSubview:barrier];
     
     self.animator = [[UIDynamicAnimator alloc]
-                                     initWithReferenceView:self.view];
+                     initWithReferenceView:self.view];
     self.gravity = [[UIGravityBehavior alloc] initWithItems:@[square]];
     [self.animator addBehavior:self.gravity];
     
-    _collision = [[UICollisionBehavior alloc] initWithItems:@[square, barrier]];
+    _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
     _collision.translatesReferenceBoundsIntoBoundary = YES;
+    _collision.collisionDelegate = self;
+    CGPoint rightEdge = CGPointMake(barrier.frame.origin.x + barrier.frame.size.width,
+                                    barrier.frame.origin.y);
+    [_collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrier.frame.origin toPoint:rightEdge];
     [self.animator addBehavior:_collision];
+}
+
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
+    NSLog(@"Boundary contact occurred - %@", identifier);
+    
+    UIView *view = (UIView*)item;
+    view.backgroundColor = [UIColor yellowColor];
+    [UIView animateWithDuration:0.3 animations:^{
+        view.backgroundColor = [UIColor grayColor];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
