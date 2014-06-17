@@ -200,6 +200,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Fruit Lee";
 				TargetAttributes = {
+					6ED3E772195029060007C087 = {
+						DevelopmentTeam = PZ8TC6BH9T;
+					};
 					6ED3E793195029060007C087 = {
 						TestTargetID = 6ED3E772195029060007C087;
 					};
@@ -377,6 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS7Tutorial/iOS7Tutorial-Prefix.pch";
 				INFOPLIST_FILE = "iOS7Tutorial/iOS7Tutorial-Info.plist";
@@ -390,6 +394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS7Tutorial/iOS7Tutorial-Prefix.pch";
 				INFOPLIST_FILE = "iOS7Tutorial/iOS7Tutorial-Info.plist";
