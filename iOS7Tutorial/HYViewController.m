@@ -10,6 +10,7 @@
 
 @interface HYViewController () <UICollisionBehaviorDelegate> {
     UICollisionBehavior* _collision;
+    BOOL _firstContact;
 }
 
 @property (nonatomic, strong) UIDynamicAnimator *animator;
@@ -42,6 +43,11 @@
                                     barrier.frame.origin.y);
     [_collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrier.frame.origin toPoint:rightEdge];
     [self.animator addBehavior:_collision];
+    
+    UIDynamicItemBehavior *itemBehavior =
+        [[UIDynamicItemBehavior alloc] initWithItems:@[square]];
+    itemBehavior.elasticity = 0.6;
+    [self.animator addBehavior:itemBehavior];
 }
 
 - (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
@@ -52,6 +58,20 @@
     [UIView animateWithDuration:0.3 animations:^{
         view.backgroundColor = [UIColor grayColor];
     }];
+    
+    if (!_firstContact) {
+        _firstContact = YES;
+        
+        UIView *square = [[UIView alloc]
+                              initWithFrame:CGRectMake(30, 0, 100, 100)];
+        square.backgroundColor = [UIColor grayColor];
+        [self.view addSubview:square];
+        
+        [_collision addItem:square];
+        [self.gravity addItem:square];
+        UIAttachmentBehavior *attach = [[UIAttachmentBehavior alloc] initWithItem:view attachedToItem:square];
+        [self.animator addBehavior:attach];
+    }
 }
 
 - (void)didReceiveMemoryWarning
