@@ -26,13 +26,16 @@
     UIView *square = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     square.backgroundColor = [UIColor grayColor];
     [self.view addSubview:square];
+    UIView *barrier = [[UIView alloc] initWithFrame:CGRectMake(0, 300, 130, 20)];
+    barrier.backgroundColor = [UIColor redColor];
+    [self.view addSubview:barrier];
     
     self.animator = [[UIDynamicAnimator alloc]
                                      initWithReferenceView:self.view];
     self.gravity = [[UIGravityBehavior alloc] initWithItems:@[square]];
     [self.animator addBehavior:self.gravity];
     
-    _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
+    _collision = [[UICollisionBehavior alloc] initWithItems:@[square, barrier]];
     _collision.translatesReferenceBoundsIntoBoundary = YES;
     [self.animator addBehavior:_collision];
 }
